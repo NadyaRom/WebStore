@@ -49,6 +49,15 @@ public class MaterialController {
 //		return "redirect:/admin/material";
 //		
 //	}
+	
+	
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable int id,Model model) {
+		model.addAttribute("material", materialService.findById(id));
+		show(model);
+		return "admin-material";
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 		materialService.deleteById(id);

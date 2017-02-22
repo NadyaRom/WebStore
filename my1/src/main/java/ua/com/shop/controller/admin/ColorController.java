@@ -51,6 +51,13 @@ public class ColorController {
 //		
 //	}
 	
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable int id,Model model) {
+		model.addAttribute("color", colorService.findById(id));
+		show(model);
+		return "admin-color";
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 		colorService.deleteById(id);

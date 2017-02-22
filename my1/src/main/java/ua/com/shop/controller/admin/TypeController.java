@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -44,6 +45,13 @@ public class TypeController {
 		typeService.save(type);
 		status.setComplete();
 		return "redirect:/admin/type";
+	}
+	
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable int id,Model model) {
+		model.addAttribute("type", typeService.findById(id));
+		show(model);
+		return "admin-type";
 	}
 	
 	@GetMapping

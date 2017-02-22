@@ -51,6 +51,15 @@ public class ProducerController {
 //		return "redirect:/admin/producer";
 		
 //	}
+	
+	
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable int id,Model model) {
+		model.addAttribute("producer", producerService.findById(id));
+		show(model);
+		return "admin-producer";
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 		producerService.deleteById(id);

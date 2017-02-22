@@ -52,6 +52,14 @@ public class DesignController {
 //		
 //	}
 	
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable int id,Model model) {
+		model.addAttribute("design", designService.findById(id));
+		show(model);
+		return "admin-design";
+	}
+	
+	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 		designService.deleteById(id);

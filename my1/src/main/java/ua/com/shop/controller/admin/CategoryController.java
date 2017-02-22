@@ -60,6 +60,14 @@ public class CategoryController {
 			return "user-categories";
 	}
 	
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable int id,Model model) {
+		model.addAttribute("category", categoryService.findById(id));
+		show(model);
+		return "admin-category";
+	}
+	
+	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 		categoryService.deleteById(id);

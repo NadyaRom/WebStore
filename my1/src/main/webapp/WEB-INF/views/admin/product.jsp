@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <div class="row">
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -32,7 +33,7 @@
 	<div class="col-md-3 col-xs-12"></div>
 		<div class="row">
 			<div class="col-md-12 col-xs-12">
-				<form class="form-horizontal" action="/admin/product" method="POST">
+				<form:form class="form-horizontal" action="/admin/product" method="POST" modelAttribute="product">
 					<div class="form-group">
     					<label for="name" class="col-sm-1 control-label">Name</label>
     					<div class="col-sm-10">
@@ -48,71 +49,43 @@
   					<div class="form-group">
   						<label class="col-sm-1 control-label">Category</label>
   						<div class="col-sm-10">
-  							<select class="form-control" name="categoryId">
-  								<c:forEach items="${categories}" var="category">
-  									<option value="${category.id}"> ${category.name}</option>
-  								</c:forEach>
-  							</select>
+  							<form:select class="form-control" path="category" id="category" items="${categories}" itemValue="id" itemLabel="name"/>
   						</div>	
   					</div>
   					<div class="form-group">
   						<label class="col-sm-1 control-label">Producer</label>
   						<div class="col-sm-10">
-  							<select class="form-control" name="producerId">
-  								<c:forEach items="${producers}" var="producer">
-  									<option value ="${producer.id}">${producer.name}</option>
-  								</c:forEach>
-  							</select>
+  							 <form:select class="form-control" path="producer" id="producer" items="${producers}" itemValue="id" itemLabel="name"/>
   						</div>
   					</div>
   					<div class="form-group">
   						<label class="col-sm-1 control-label">Color</label>
   						<div class="col-sm-10">
-  							<select class="form-control" name="colorId">
-  								<c:forEach items="${colors}" var="color">
-  									<option value="${color.id}">${color.name}</option>
-  								</c:forEach>
-  							</select>
+  						 <form:select class="form-control" path="color" id="color" items="${colors}" itemValue="id" itemLabel="name"/>
   						</div>
   					</div>
   					<div class="form-group">
   						<label class="col-sm-1 control-label">Design</label>
   						<div class="col-sm-10">
-  							<select class="form-control" name="designId">
-  								<c:forEach items="${designs}" var="design">
-  									<option value="${design.id}">${design.name}</option>
-  								</c:forEach>
-  							</select>
+  						<form:select class="form-control" path="design" id="design" items="${designs}" itemValue="id" itemLabel="name"/>
   						</div>
   					</div>
   					<div class="form-group">
   						<label class="col-sm-1 control-label">Material</label>
   						<div class="col-sm-10">
-  							<select class="form-control" name="materialId">
-  								<c:forEach items="${materials}" var="material">
-  									<option value="${material.id}">${material.name}</option>
-  								</c:forEach>
-  							</select>
+  						  <form:select class="form-control" path="material" id="material" items="${materials}" itemValue="id" itemLabel="name"/>
   						</div>
   					</div>
   					<div class="form-group">
   						<label class="col-sm-1 control-label">Type</label>
   						<div class="col-sm-10">
-  							<select class="form-control" name="typeId">
-  								<c:forEach items="${types}" var="type">
-  									<option value="${type.id}">${type.name}</option>
-  								</c:forEach>
-  							</select>
+  							<form:select class="form-control" path="type" id="type" items="${types}" itemValue="id" itemLabel="name"/>
   						</div>
   					</div>
   					<div class="form-group">
   						<label class="col-sm-1 control-label">PC</label>
   						<div class="col-sm-10">
-  							<select class="form-control" name="psId">
-  								<c:forEach items="${pss}" var="ps">
-  									<option value="${ps.id}">${ps.name}</option>
-  								</c:forEach>
-  							</select>
+  							<form:select class="form-control" path="phoneCompatibility" id="phoneCompatibility" items="${pss}" itemValue="id" itemLabel="name"/>
   						</div>
   					</div>
   					<div class="form-group">
@@ -122,7 +95,7 @@
   					</div>
   					
   					
-  					</form>
+  					</form:form>
   </div>
 		<div class="row">
 			<div class="col-md-1 col-xs-1"><h6>Product name</h6></div>
@@ -134,6 +107,9 @@
 			<div class="col-md-1 col-xs-1"><h6>Design</h6></div>
 			<div class="col-md-1 col-xs-1"><h6>Material</h6></div>
 			<div class="col-md-1 col-xs-1"><h6>Producer</h6></div>
+			<div class="col-md-1 col-xs-1"><h6>Update</h6></div>
+			<div class="col-md-1 col-xs-1"><h6>Delete</h6></div>
+			
 			
 			
 		</div>
@@ -148,6 +124,8 @@
 					<div class="col-md-1 col-xs-1">${product.design.name}</div>
 					<div class="col-md-1 col-xs-1">${product.material.name}</div>
 					<div class="col-md-1 col-xs-1">${product.producer.name}</div>
+					<div class="col-md-1 col-xs-1"><a class="btn btn-warning" href="/admin/product/update/${product.id}">update</a></div>
+					<div class="col-md-1 col-xs-1"><a class="btn btn-danger" href="/admin/product/delete/${product.id}">delete</a></div>
 				</div>
 			</c:forEach>
 	</div>

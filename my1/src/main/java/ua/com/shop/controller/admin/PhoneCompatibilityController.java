@@ -50,6 +50,14 @@ public class PhoneCompatibilityController {
 //		
 //	}
 	
+	@GetMapping("/update/{id}")
+	public String update(@PathVariable int id,Model model) {
+		model.addAttribute("ps", phoneCompatibilityService.findById(id));
+		show(model);
+		return "admin-phoneCompatibility";
+	}
+	
+	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 		phoneCompatibilityService.deleteById(id);
