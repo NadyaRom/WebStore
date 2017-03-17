@@ -1,18 +1,15 @@
 package ua.com.shop.entity;
 
-import java.util.List;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.criteria.Order;
 
 @Entity
 public class Product {
@@ -23,7 +20,10 @@ public class Product {
 	
 	private String name;
 	
-	private double price;
+	@Column(name = "version", nullable = true)
+	private Integer version;
+	
+	private BigDecimal price;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Type type;
@@ -55,13 +55,23 @@ public class Product {
 	}
 
 
-	public Product(String name, double price, Type type) {
+	public Product(String name, BigDecimal price, Type type) {
 		this.name = name;
 		this.price = price;
 		this.type = type;
 	}
 
 
+
+
+	public Integer getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 
 
 	public int getId() {
@@ -84,12 +94,12 @@ public class Product {
 	}
 
 
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

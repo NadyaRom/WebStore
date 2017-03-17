@@ -10,8 +10,6 @@ public interface UserService {
 
 	User findById(int id);
 
-	void update(User user);
-
 	void deleteById(int id);
 	
 	List<User> getAll();

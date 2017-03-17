@@ -1,5 +1,4 @@
 package ua.com.shop.controller.user;
-import javax.persistence.Index;
 import javax.servlet.Registration;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +46,8 @@ public class IndexController {
 	public String login(){
 		return "user-login";
 	}
+	
+	
 	
 	@RequestMapping("/registration")
 	public String registration(Model model){

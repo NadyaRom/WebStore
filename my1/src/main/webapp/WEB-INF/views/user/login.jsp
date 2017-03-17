@@ -7,13 +7,13 @@
 			<div class="form-group">
     			<label for="login" class="col-sm-4 control-label">Login</label>
     			<div class="col-sm-3">
-      				<input class="form-control" name="login" id="login">
+      				<input class="form-control" name="login" id="login"/>
     			</div>
   			</div>
 			<div class="form-group">
     			<label for="password" class="col-sm-4 control-label">Password</label>
     			<div class="col-sm-3">
-      				<input class="form-control" name="password" id="password">
+      				<input class="form-control" name="password" id="password"/>
     			</div>
   			</div>
   			<div class="form-group">

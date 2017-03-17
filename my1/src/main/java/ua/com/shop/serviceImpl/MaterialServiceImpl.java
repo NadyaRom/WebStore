@@ -3,11 +3,17 @@ package ua.com.shop.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.com.shop.dao.MaterialDao;
+import ua.com.shop.dto.filter.BasicFilter;
+import ua.com.shop.entity.Category;
 import ua.com.shop.entity.Material;
 import ua.com.shop.service.MaterialService;
+import ua.com.shop.spec.CategorySpec;
+import ua.com.shop.spec.MaterialSpec;
 
 @Service
 public class MaterialServiceImpl  implements MaterialService{
@@ -41,5 +47,13 @@ public class MaterialServiceImpl  implements MaterialService{
 
 	public void save(Material material) {
 		materialDao.save(material);		
+	}
+
+	public Material findByName(String name) {
+		return materialDao.findByName(name);
+	}
+	@Override
+	public Page<Material> findAll(Pageable pageable, BasicFilter filter) {
+		return materialDao.findAll(new MaterialSpec(filter), pageable);
 	}
 }
